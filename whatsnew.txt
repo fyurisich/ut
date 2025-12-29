@@ -1,5 +1,11 @@
-+ tweb.ch Add DEFINE BUTTON GROUP ... [ STYLE <cStyle> ]
-+ tweb.ch Add HTML NAVBAR OF <oNav> PARAMS ...
+Vrs. 2.5
+========
+* Update UGetIp()
+* Update USessions
+
+Vrs. 2.4
+========
+* Firewall 
 
 Vrs. 2.3b
 =========

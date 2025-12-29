@@ -4,7 +4,7 @@
 STATIC nSessions_Executed := 1
 STATIC hmtxSession
 
-THREAD STATIC oSession 
+THREAD STATIC oSession
 
 // ---------------------------------------------------------------------- //
 

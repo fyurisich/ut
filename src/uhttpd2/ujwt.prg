@@ -66,7 +66,7 @@ METHOD New( cKey ) CLASS UJWT
 
    ::SetKey( cKey )
 
-   ::aPayload[ 'iss'  ] := 'runnerxbase'    // Emisor
+   ::aPayload[ 'iss'  ] := 'UT'    // Emisor
 
    RETU SELF
 
