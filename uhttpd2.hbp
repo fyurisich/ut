@@ -17,10 +17,8 @@
 -gc2
 
 -DNO_SSL
-#-D__DEBUGVIEW
 
-
-# files
+# files uhttpd2 --------------
 src/uhttpd2/umain.prg
 src/uhttpd2/utpl.prg
 src/uhttpd2/uwidgets.prg
@@ -36,3 +34,4 @@ src/uhttpd2/ugettoken.prg
 src/uhttpd2/ujwt.prg
 src/uhttpd2/utokendata.prg
 src/uhttpd2/udatakeepalive.prg
+# -----------------------------

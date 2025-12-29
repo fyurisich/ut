@@ -7,7 +7,7 @@
 **
 */
 
-const UHTTPD2_VERSION = 'Front 2.4';
+const UHTTPD2_VERSION = 'Front 2.4a';
 
 $( document ).ready(function() { console.info( 'UT ' + UHTTPD2_VERSION) })
 
@@ -1698,7 +1698,10 @@ function UDom() {
 				break;
 			case 'off':
 				$('#'+id).removeClass( value );							
-				break;																									
+				break;
+			default:
+				$('#'+id).removeClass()       
+				$('#'+id).addClass( value );				
 		}	
 	}
 	

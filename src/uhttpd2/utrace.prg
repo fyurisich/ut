@@ -25,15 +25,13 @@ function _d( ... )
 
 function _t( ... )
 
-#ifdef __DEBUGVIEW
-        #ifdef __PLATFORM__WINDOWS
-		retu WAPI_OutputDebugString( MH_Out( 'trace', ... ) )	
-	#else
-		retu TraceLog( MH_Out( 'trace', ... ) )	
-	#endif
+
+#ifdef __PLATFORM__WINDOWS
+	retu WAPI_OutputDebugString( MH_Out( 'trace', ... ) )	
 #else
-	retu ""
+	retu TraceLog( MH_Out( 'trace', ... ) )	
 #endif
+
 
 //	--------------------------------------------------------- //
 
@@ -67,7 +65,7 @@ function MH_Out( cOut, ... )
 				cLine += 'Type (' + valtype( pValue(nI) ) + ') ' + MH_ValTo( pValue(nI), nil, nil, cOut ) + CRLF	
 
 			case cOut == 'trace'
-				cLine += '(' + valtype( pValue(nI) ) + ') ' + MH_ValTo( pValue(nI), nil, nil, cOut ) + CRLF					
+				cLine += MH_ValTo( pValue(nI), nil, nil, cOut ) + CRLF					
 				
 			case cOut == 'web'				
 				cLine += MH_ValTo( pValue(nI), nil, nil, cOut ) + '<br>'

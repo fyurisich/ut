@@ -157,7 +157,7 @@
 => ;
 	[ <oBtn> := ] TWebButtonFile():New( <oForm>, [<cId>], <cLabel>, <cName>, <cAction>, <cValue>, <nGrid>, <cAlign>, <cIcon>, [<.ro.>], [<.sb.>], [<cClass>], [<cFont>], [<cWidth>], [<cConfirm>], [<cStyle>], [<hProp>], [<.mu.>] )	
 
-#xcommand DEFINE BUTTON GROUP [ CLASS <cClass>] OF <o> => <o>:Html( '<div class="btn-group ' + [<cClass>] + '">' )
+#xcommand DEFINE BUTTON GROUP [ CLASS <cClass>] [ STYLE <cStyle> ] OF <o> => <o>:Html( '<div class="btn-group ' + [<cClass>] + '" style="' + [<cStyle>] + '">' )
 
 #xcommand BUTTON GROUP [<oBtn>] [ ID <cId> ] [ <prm: PROMPT,LABEL> <cLabel> ] [ ACTION <cAction> ] [ NAME <cName> ] [ VALUE <cValue> ] ;
     [ GRID <nGrid> ] [ ALIGN <cAlign> ]  ;
@@ -319,7 +319,11 @@
 #xcommand HTML NAVBAR OF <oNav> ;
 => ;
 	#pragma __cstream |<oNav>:AddNavBarCode( %s )		
-//	-------------------------------------------------------------
+
+#xcommand HTML NAVBAR OF <oNav>  PARAMS [<v1>] [,<vn>] ;
+=> ;
+	#pragma __cstream |<oNav>:AddNavBarCode( UInlinePrg( UReplaceBlocks( %s, '<$', "$>" [,<(v1)>][+","+<(vn)>] [, @<v1>][, @<vn>] ) ) )
+
 
 // FOLDER --------------------------------------------- //
 		 

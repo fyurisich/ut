@@ -16,11 +16,9 @@
 -q0
 -gc2
 
-# DebugView. You need compile aplication with hbwin.hbc 
--D__DEBUGVIEW
 
 
-# files
+# files uhttpd2 --------------
 src/uhttpd2/umain.prg
 src/uhttpd2/utpl.prg
 src/uhttpd2/uwidgets.prg
@@ -35,6 +33,7 @@ src/uhttpd2/uwebsocket.prg
 src/uhttpd2/ugettoken.prg
 src/uhttpd2/ujwt.prg
 src/uhttpd2/utokendata.prg
+# -----------------------------
 
 
 # libraries

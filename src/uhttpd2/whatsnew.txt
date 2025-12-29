@@ -1,3 +1,5 @@
+- UTrace -> _t()
+
 Vrs. 2.4
 =========
 - Add new method SetFirewallFilter( <uFilter>, [<cType>] ) 
