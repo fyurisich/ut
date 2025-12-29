@@ -1,13 +1,13 @@
 /*
 **	module.....: uhttpd2.js -- module control for uhttpd2 (Harbour)
-**	version....: Front 2.4
-**  	last update: 02/01/2025
+**	version....: Front 2.4a
+**  last update: 29/03/2025
 **
 **	(c) 2022-2025 by Carles Aubia
 **
 */
 
-const UHTTPD2_VERSION = 'Front 2.4';
+const UHTTPD2_VERSION = 'Front 2.4a';
 
 $( document ).ready(function() { console.info( 'UT ' + UHTTPD2_VERSION) })
 
@@ -579,15 +579,23 @@ function UShoot( url, oPar, lFileUpload, fCallback, oMyOptions ) {
 	
 	// -------------------------------------------------
 		
+		if (!sessionStorage.getItem('UT_stamp')) {
+			sessionStorage.setItem('UT_stamp', 'STAMP' + Date.now().toString());
+		}
 		
+		const UT_stamp = sessionStorage.getItem('UT_stamp');		
 		
+	// -------------------------------------------------
+	
 	var oOptions = {
 					type: "POST",
 					url: cUrl, //url,
 					data: oPar,	
 					cache: false,
 					async: false, 
-					beforeSend: function() {} 
+					beforeSend: function(xhr) {						    
+						xhr.setRequestHeader('UT_stamp', UT_stamp ); // Inserta la cabecera personalizada						
+					} 
 				}
 				
 				
@@ -1690,7 +1698,10 @@ function UDom() {
 				break;
 			case 'off':
 				$('#'+id).removeClass( value );							
-				break;																									
+				break;
+			default:
+				$('#'+id).removeClass()       
+				$('#'+id).addClass( value );				
 		}	
 	}
 	

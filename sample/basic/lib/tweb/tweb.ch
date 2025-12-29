@@ -157,7 +157,7 @@
 => ;
 	[ <oBtn> := ] TWebButtonFile():New( <oForm>, [<cId>], <cLabel>, <cName>, <cAction>, <cValue>, <nGrid>, <cAlign>, <cIcon>, [<.ro.>], [<.sb.>], [<cClass>], [<cFont>], [<cWidth>], [<cConfirm>], [<cStyle>], [<hProp>], [<.mu.>] )	
 
-#xcommand DEFINE BUTTON GROUP [ CLASS <cClass>] OF <o> => <o>:Html( '<div class="btn-group ' + [<cClass>] + '">' )
+#xcommand DEFINE BUTTON GROUP [ CLASS <cClass>] [ STYLE <cStyle> ] OF <o> => <o>:Html( '<div class="btn-group ' + [<cClass>] + '" style="' + [<cStyle>] + '">' )
 
 #xcommand BUTTON GROUP [<oBtn>] [ ID <cId> ] [ <prm: PROMPT,LABEL> <cLabel> ] [ ACTION <cAction> ] [ NAME <cName> ] [ VALUE <cValue> ] ;
     [ GRID <nGrid> ] [ ALIGN <cAlign> ]  ;
@@ -270,13 +270,13 @@
 #xcommand ENDMENU GROUP OF <oNav>  					=> <oNav>:AddMenuItem( nil    , nil, nil      , nil, .t., .t., .t. )
 #xcommand ENDMENU OF <oNav>  						=> <oNav>:AddMenuItem( nil    , nil, nil      , nil, .t., .t., .f. )
 
-#xcommand MENUITEM <cItem> [ ICON <cIcon> ] [ ROUTE <cRoute> ] [ <ac: ACTIVE>  ] [ CONFIRM <cConfirm>] OF <oNav>  ;
+#xcommand MENUITEM <cItem> [ ICON <cIcon> ] [ ROUTE <cRoute> ] [ ACTION <cAction> ] [ <ac: ACTIVE>  ] [ CONFIRM <cConfirm>] OF <oNav>  ;
 => ;
-	<oNav>:AddMenuItem( <cItem>, [<cRoute>], [<cIcon>], nil   , .f.  , .f.     , .f.   ,.f.        ,[<.ac.>], [<cConfirm>], .t.      , .f.    )
+	<oNav>:AddMenuItem( <cItem>, [<cRoute>], [<cIcon>], [<cAction>], .f.  , .f.     , .f.   ,.f.        ,[<.ac.>], [<cConfirm>], .t.      , .f.    )
 	
-#xcommand MENUITEM <cItem> [ ICON <cIcon> ] [ ROUTE <cRoute> ] [ ACTIVE <lActive>  ] [ CONFIRM <cConfirm>] OF <oNav>  ;
+#xcommand MENUITEM <cItem> [ ICON <cIcon> ] [ ROUTE <cRoute> ] [ ACTION <cAction> ] [ ACTIVE <lActive>  ] [ CONFIRM <cConfirm>] OF <oNav>  ;
 => ;
-	<oNav>:AddMenuItem( <cItem>, [<cRoute>], [<cIcon>], nil   , .f.  , .f.     , .f.   ,.f.        ,[<lActive>], [<cConfirm>], .t.   , .f.    )
+	<oNav>:AddMenuItem( <cItem>, [<cRoute>], [<cIcon>], [<cAction>], .f.  , .f.     , .f.   ,.f.        ,[<lActive>], [<cConfirm>], .t.   , .f.    )
 
 
 #xcommand MENUITEM HEADER <cItem> OF <oNav> => <oNav>:AddMenuItemHeader( <cItem> )
@@ -319,7 +319,11 @@
 #xcommand HTML NAVBAR OF <oNav> ;
 => ;
 	#pragma __cstream |<oNav>:AddNavBarCode( %s )		
-//	-------------------------------------------------------------
+
+#xcommand HTML NAVBAR OF <oNav>  PARAMS [<v1>] [,<vn>] ;
+=> ;
+	#pragma __cstream |<oNav>:AddNavBarCode( UInlinePrg( UReplaceBlocks( %s, '<$', "$>" [,<(v1)>][+","+<(vn)>] [, @<v1>][, @<vn>] ) ) )
+
 
 // FOLDER --------------------------------------------- //
 		 
